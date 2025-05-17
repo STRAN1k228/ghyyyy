@@ -5,7 +5,7 @@ function NewsItem({ title, text, image }) {
     <article className="news-item">
         <h2>{title}</h2>
         <p>{text}</p>
-        <img src={image}></img>
+        <img src={image} alt='соре'></img>
     </article>
     );
 }
