@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import './tralala.css';
+import NewsList from './NewsList';
+import data from './data';
+import AddNewsForm from './AddNewsForm';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [news, setNews] = useState([
+    ]);
+
+    const addNews = (newNews) => {
+        setNews([newNews, ...news])
+    }
+
+    return (
+        <Router>
+            <div className="app">
+                <h1>Новостная лента</h1>
+                <ul>
+                    <li><Link to='/'>Главная</Link></li>
+                    <li><Link to='/add'>Добавить новость</Link></li>
+                </ul>
+                <NewsList news={data} />
+                <Routes>
+                    <Route path='/' element={<NewsList news={news} />} />
+                    <Route path='/add' element={<AddNewsForm onAddNews={addNews} />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
