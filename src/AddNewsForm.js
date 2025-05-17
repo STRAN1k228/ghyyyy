@@ -64,6 +64,7 @@ function AddNewsForm({ onAddNews }) {
                         value={image}
                         onChange={ (e) => setImage(e.target.value)}
                         required
+                        alt=''
                     />
                 </div>
                 <button type='submit'>Добавить новость</button>
